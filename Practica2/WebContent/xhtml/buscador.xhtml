@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">#{msg.buscador_titulo}</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<p:panelGrid id = "panel" border = "2" cellpadding="5" style="margin: 0 auto;" columns="3" >
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="2">
+							#{msg.buscador_panel_titulo}
+						</p:column>
+					</p:row>
+				</f:facet>
+				
+				<p:row>
+				 	<p:column colspan="1" rowspan="2">
+				 		<p:outputLabel value="#{msg.buscador_panel_lista_temporadas}" />
+						<p:selectOneListbox value="#{beanBuscador.temporadaElegida}" id="listaTemporadas" scrollHeight="200" style="width: 100%;" >
+							<f:selectItems value="#{beanBuscador.temporadas}" var="item" itemValue="#{item}" itemLabel="#{item}" />
+						</p:selectOneListbox>
+					</p:column>
+					
+					<p:column colspan="1" rowspan="1">
+						<p:outputLabel for="fechaInicio" value="#{msg.buscador_panel_fecha_inicio}: " />
+	        			<p:calendar id="fechaInicio" value="#{beanBuscador.fechaInicio}" showOn="button" readonlyInput="true" pattern="dd/MM/yyyy hh:mm">
+	        				
+	        				<p:ajax listener="#{beanBuscador.elegirFecha}"
+										update="buttonBuscar" />
+										
+	        			</p:calendar>
+					</p:column>
+	        	</p:row>
+	        	
+	        	
+	        	
+	        	<p:row>
+	        		<p:column colspan="1" rowspan="2" style="width:200px;">
+						<p:outputLabel value="#{msg.buscador_panel_lista_jugadores}" />
+						<p:selectOneListbox value="#{beanBuscador.jugador}" id="listaJugadores"
+												scrollHeight="200" style="width: 100%;" >
+							<f:selectItems value="#{beanBuscador.jugadores}" var="item" itemValue="#{item}" itemLabel="#{item}" />										
+						</p:selectOneListbox>
+					</p:column>
+	        	
+	        		<p:column colspan="1" rowspan="1">
+	        			<p:outputLabel for="fechaFin" value="#{msg.buscador_panel_fecha_fin}: " />
+	        			<p:calendar id="fechaFin" value="#{beanBuscador.fechaFin}" showOn="button" readonlyInput="true" pattern="dd/MM/yyyy hh:mm">
+	        				
+	        				<p:ajax listener="#{beanBuscador.elegirFecha}"
+										update="buttonBuscar" />
+										
+	        			</p:calendar>
+	        		</p:column>
+	        	</p:row>
+	        	
+	        	<p:row>
+	        		<p:column rowspan="1">
+						 <p:commandButton id="buttonBuscar" disabled="#{beanBuscador.buscarDisabled}" value = "#{msg.buscador_boton_buscar}" icon="ui-icon-check" action="#{beanBuscador.buscar}" />
+	        		</p:column>
+	        	</p:row>
+				
+			</p:panelGrid>
+			
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

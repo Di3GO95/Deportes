@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head >
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<meta charset="ISO-8859-1">
+		<title>Editar Perfil</title>
+		
+	</head>
+	<body style="margin: 0;">
+	
+		<div id="header">
+			<span style="float: left; font-size: 50px;">
+				<a href='xhtml/main.xhtml'>
+					<img src="img/logo.png" width=480px height=90px alt="logo">
+				</a>
+			</span>
+			
+			<span style="float: right; word-spacing: 2px; padding-right: 0cm; padding-top: 20px">
+				Hola, 
+				| <a href='editarPerfil' style="color:white">Editar perfil</a>
+				| <a href='logout' style="color:white">Cerrar sesión</a>
+			</span>
+			
+		</div>
+	
+		<form action="editarPerfil" method="post" enctype = "multipart/form-data">
+			<div id="section" style="width: 500px; height: 700px; overflow: scroll;">
+			    <h2>
+				    Nombre de usuario<br>
+				    <input type="text" name="usuario" class="text-line2" 
+										required readonly>
+				    <br><br>
+				    Sube una foto (opcional)
+				    
+				    <br>
+				    <input type="file" name="foto" accept="image/jpeg, image/jpg, image/png">
+				    <br><br>
+				    Correo<br>
+				    <input type="text" name="mail" class="text-line2" 
+				    					pattern=".+@.+"
+				    					oninvalid="this.setCustomValidity('Escriba correo válido')"
+				    					oninput="setCustomValidity('')"
+										required onfocus="this.style.color='black'; this.style.borderColor='black';"
+				    					onblur="if(this.value=='')
+				    								{this.style.borderColor='#BDBDBD';}">
+					<br><br>
+					Telefono<br>
+				    <input type="text" name="telefono" class="text-line2" 
+				    					onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
+				    					pattern=".{9}"
+				    					oninvalid="this.setCustomValidity('Escriba un número de 9 dígitos')"
+				    					oninput="setCustomValidity('')"
+										required onfocus="this.style.color='black'; this.style.borderColor='black';"
+				    					onblur="if(this.value=='')
+				    								{this.style.borderColor='#BDBDBD';}">
+				    <br><br>
+				    Contraseña actual<br>
+				    <input type="password" name="claveActual" class="text-line" required
+				    					onfocus="this.style.color='black'; this.style.borderColor='black';"
+				    					onblur="if(this.value=='')
+				    								{this.style.borderColor='#BDBDBD';}">
+				    <br><br>
+				    Nueva contraseña<br>
+				    <input type="password" name="claveNueva1" class="text-line" required
+				    					onfocus="this.style.color='black'; this.style.borderColor='black';"
+				    					onblur="if(this.value=='')
+				    								{this.style.borderColor='#BDBDBD';}">
+				    <br><br>
+				    Confirmar nueva contraseña<br>
+				    <input type="password" name="claveNueva2" class="text-line" required
+				    					onfocus="this.style.color='black'; this.style.borderColor='black';"
+				    					onblur="if(this.value=='')
+				    								{this.style.borderColor='#BDBDBD';}">
+				    <br><br>
+
+					<input type="button" value="Volver" class="button"
+										onclick="window.location.href='xhtml/main.xhtml'"/>
+				    <input type="submit" class="button" value="Actualizar perfil">
+				</h2>
+	  		</div>
+		</form>
+
+	</body>
+</html>

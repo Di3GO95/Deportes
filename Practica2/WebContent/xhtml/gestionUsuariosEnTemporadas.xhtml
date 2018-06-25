@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">#{msg.gestion_usuarios_titulo}</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<p:panelGrid columns="3" border="2" width="100%"
+				columnClasses="twenty-percent, forty-percent, forty-percent">
+
+				<f:facet name="header">
+					<p:outputLabel value="#{msg.gestion_usuarios_panel_titulo}" />
+				</f:facet>
+
+				<p:outputLabel value="#{msg.gestion_usuarios_paso_uno_titulo}" />
+				<p:selectOneListbox
+					value="#{beanGestionUsuariosEnTemporadas.temporadaElegida}"
+					id="listBox1" scrollHeight="200" style="width: 100%;">
+					<f:selectItems
+						value="#{beanGestionUsuariosEnTemporadas.listaTemporadas}"
+						var="item" itemValue="#{item}" itemLabel="#{item}" />
+
+					<p:ajax
+						listener="#{beanGestionUsuariosEnTemporadas.elegirTemporada}"
+						update="pickList" />
+				</p:selectOneListbox>
+				<p:outputLabel
+					value="#{msg.gestion_usuarios_paso_uno_desc}" />
+
+
+				<p:outputLabel
+					value="#{msg.gestion_usuarios_paso_dos_titulo}" />
+
+				<p:row>
+					<p:column>
+						<div align="center">
+							<p:pickList id="pickList"
+								value="#{beanGestionUsuariosEnTemporadas.participantes}"
+								disabled="#{beanGestionUsuariosEnTemporadas.listaParticipantesDisabled}"
+								var="participantes" itemLabel="#{participantes}"
+								itemValue="#{participantes}">
+
+								<f:facet name="sourceCaption">#{msg.gestion_usuarios_paso_dos_usuarios_disponibles}</f:facet>
+								<f:facet name="targetCaption">#{msg.gestion_usuarios_paso_dos_usuarios_registrados}</f:facet>
+
+								<p:ajax event="transfer"
+									listener="#{beanGestionUsuariosEnTemporadas.transfer}"
+									update="botonConfirmar" />
+							</p:pickList>
+						</div>
+					</p:column>
+				</p:row>
+
+				<p:outputLabel value="#{msg.gestion_usuarios_paso_dos_desc}" />
+
+
+
+				<p:outputLabel value="#{msg.gestion_usuarios_paso_tres_titulo}" />
+				<p:commandButton id="botonConfirmar"
+					disabled="#{beanGestionUsuariosEnTemporadas.buttonDisabled}"
+					value="#{msg.gestion_usuarios_paso_tres_boton}" icon="ui-icon-check"
+					action="#{beanGestionUsuariosEnTemporadas.confirmar}">
+				</p:commandButton>
+				<p:outputLabel
+					value="#{msg.gestion_usuarios_paso_tres_desc}" />
+
+			</p:panelGrid>
+			
+			<p:growl id="growl-success" life="6000" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

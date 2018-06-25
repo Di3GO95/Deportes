@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">#{msg.gestion_resultados_titulo}</ui:define>
+	
+	<ui:define name="content">
+		<h:form>
+			<p:panelGrid id = "panel" border = "2" cellpadding="5" style="margin: 0 auto;" >
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="4">
+							#{msg.gestion_resultados_panel_titulo}
+						</p:column>
+					</p:row>
+					
+				</f:facet>
+				
+				<p:row>
+				 	<p:column colspan="1">
+				 		<p:outputLabel value="#{msg.gestion_resultados_panel_lista_temporadas}" />
+						<p:selectOneListbox value="#{beanGestionarResultados.temporadaElegida}" id="listaTemporadas" scrollHeight="200" style="width: 100%;" >
+							<f:selectItems value="#{beanGestionarResultados.temporadas}" var="item" itemValue="#{item}" itemLabel="#{item}" />
+							
+							<p:ajax listener="#{beanGestionarResultados.elegirTemporada}"
+										update="listaPartidos" />
+						</p:selectOneListbox>
+					</p:column>
+					
+					<p:column colspan="1" style="width:200px;">
+						<p:outputLabel value="#{msg.gestion_resultados_panel_lista_partidos}" />
+						<p:selectOneListbox value="#{beanGestionarResultados.partidoElegido}" id="listaPartidos" disabled="#{beanGestionarResultados.partidosDisabled}"
+												scrollHeight="200" style="width: 100%;" >
+							<f:selectItems value="#{beanGestionarResultados.partidos}" var="item" itemValue="#{item}" itemLabel="#{item}" />
+							
+							<p:ajax listener="#{beanGestionarResultados.elegirPartido}"
+										update="tablaAlineaciones botonConfirmar"/>
+										
+						</p:selectOneListbox>
+					</p:column>
+					
+					<p:column>
+						<p:dataTable id = "tablaAlineaciones" var = "alineacion" value = "#{beanGestionarResultados.alineaciones}" >
+							<p:column headerText="#{msg.gestion_resultados_panel_alineacion}">
+								<h:outputLabel for="tanteo" value="[#{alineacion.nombre}] - #{alineacion.color}" />
+							</p:column>
+							<p:column headerText="#{msg.gestion_resultados_panel_tanteo}">
+								<p:spinner id="tanteo" value="#{alineacion.tanteo}" min="0" />
+							</p:column>
+						</p:dataTable>
+					</p:column>
+					
+					<p:column colspan="1">
+	        			<p:commandButton id="botonConfirmar" disabled="#{beanGestionarResultados.buttonConfirmarDisabled}" value="#{msg.gestion_resultados_panel_boton_confirmar}" icon="ui-icon-check"
+							action="#{beanGestionarResultados.registrarResultados}">
+						</p:commandButton>
+	        		</p:column>
+	        	</p:row>
+	        	
+				<p:growl id="growl-success" life="30000" />
+			</p:panelGrid>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+</html>

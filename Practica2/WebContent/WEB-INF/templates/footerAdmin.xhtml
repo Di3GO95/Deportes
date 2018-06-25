@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<body>
+	<!--  rendered="#{not empty usuarioActual.usuario}" -->
+	<h:form rendered="#{isAdmin}" >
+		<div>
+			<table align="center">
+				<tr>
+					<th><a href="registrarTemporada.xhtml">#{msg.footerAdmin_registrar_temporada}</a></th>
+					<th><a href="gestionUsuariosEnTemporadas.xhtml">#{msg.footerAdmin_gestionar_temporadas}</a></th>
+					<th><a href="registrarPartidos.xhtml">#{msg.footerAdmin_registrar_partidos}</a></th>
+					<th><a href="registrarAlineaciones.xhtml">#{msg.footerAdmin_registrar_alineacion}</a></th>
+					<th><a href="gestionarResultados.xhtml">#{msg.footerAdmin_gestionar_resultados}</a></th>
+					<th><a href="admin_confirmaciones.xhtml">CONFIRMACIONES DE USUARIOS</a></th>		
+				</tr>
+			</table>
+		</div>
+	</h:form>
+</body>
+</html>

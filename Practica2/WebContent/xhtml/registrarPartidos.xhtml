@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">#{msg.registrar_partido_titulo}</ui:define>
+
+	<ui:define name="content">
+
+		<h:form id="form">
+			<div align="center">
+
+				<p:panelGrid id="panel" border="2" cellpadding="5">
+					<f:facet name="header">
+						<p:row>
+							<p:column colspan="3">
+								#{msg.registrar_partido_panel_titulo}
+							</p:column>
+						</p:row>
+					</f:facet>
+
+					<p:row>
+						<p:column>#{msg.registrar_partido_panel_temporada}</p:column>
+						<p:column>#{msg.registrar_partido_panel_fecha}</p:column>
+						<p:column>#{msg.registrar_partido_panel_confirmacion}</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column colspan="1" rowspan="2">
+							<p:selectOneListbox
+								value="#{beanRegistrarPartido.temporadaElegida}"
+								id="listaTemporadas" scrollHeight="200" style="width: 100%;">
+								<f:selectItems value="#{beanRegistrarPartido.listaTemporadas}"
+									var="item" itemValue="#{item}" itemLabel="#{item}" />
+
+								<p:ajax listener="#{beanRegistrarPartido.elegirTemporada}"
+									update="botonConfirmar" />
+
+							</p:selectOneListbox>
+						</p:column>
+
+						<p:column colspan="1">
+							<p:outputLabel for="fecha" value="" />
+							<p:calendar id="fecha" value="#{beanRegistrarPartido.fecha}"
+								showOn="button" readonlyInput="true" pattern="dd/MM/yyyy hh:mm">
+								<p:ajax event="dateSelect"
+									listener="#{beanRegistrarPartido.elegirTemporada}"
+									update="botonConfirmar" />
+							</p:calendar>
+
+						</p:column>
+
+						<p:column colspan="1" rowspan="2">
+							<p:commandButton id="botonConfirmar"
+								disabled="#{beanRegistrarPartido.buttonConfirmarDisabled}"
+								value="#{msg.registrar_partido_panel_confirmar}" icon="ui-icon-check"
+								action="#{beanRegistrarPartido.registrarPartido}">
+
+							</p:commandButton>
+						</p:column>
+					</p:row>
+
+				</p:panelGrid>
+			</div>
+			<p:growl id="growl-success" life="6000" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

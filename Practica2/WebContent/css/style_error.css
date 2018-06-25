@@ -1,0 +1,46 @@
+body {
+	background-color: #F17153;
+}
+
+#header {
+	background-color: #F17153;
+	color: white;
+	padding: 5% 30px 30px 30px;
+	font-size: 30px;
+	border-bottom-style: solid;
+	border-color: black;
+	border-width: 1px;
+	font-family: Arial;
+	text-align: center;
+	font-weight: bold;
+}
+
+#section {
+	width: 100%;
+	float: left;
+	padding: 10px;
+	text-align: center;
+	background-color: white;
+	font-size: 2em;
+}
+
+.buttonVolver {
+	background-color: #EB5A46;
+	border: 2px solid #EB5A46;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 4px 2px;
+	cursor: pointer;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+}
+
+.buttonVolver:hover {
+	background-color: white;
+	color: #EB5A46;
+}

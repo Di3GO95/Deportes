@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/validar/templateValidar.xhtml">
+	<ui:define name="title">#{msg.validar_titulo}</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			#{beanValidar.init()}
+			<p:panelGrid id = "panel" border = "2" cellpadding="5" style="margin: 0 auto;" >
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="1">
+							#{msg.validar_panel_titulo}
+						</p:column>
+					</p:row>
+				</f:facet>
+				
+				<p:row>
+				 	<p:column colspan="1" rowspan="1">
+				 		<p:outputLabel value="#{beanValidar.mensajeInformacion}" />
+					</p:column>
+	        	</p:row>
+				
+			</p:panelGrid>
+			
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

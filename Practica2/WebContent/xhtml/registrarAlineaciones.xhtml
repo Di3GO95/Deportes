@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">#{msg.registrar_alineaciones_titulo}</ui:define>
+	
+	<ui:define name="content">
+	
+		<h:form>
+			<p:panelGrid id = "panel" border = "2" cellpadding="5" style="margin: 0 auto;" >
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="5">
+							#{msg.registrar_alineaciones_panel_titulo}
+						</p:column>
+					</p:row>
+				</f:facet>
+				
+				<p:row>
+				 	<p:column colspan="1" rowspan="3">
+				 		<p:outputLabel value="#{msg.registrar_alineaciones_panel_lista_temporadas}" />
+						<p:selectOneListbox value="#{beanRegistrarAlineacion.temporadaElegida}" id="listaTemporadas" scrollHeight="200" style="width: 100%;" >
+							<f:selectItems value="#{beanRegistrarAlineacion.temporadas}" var="item" itemValue="#{item}" itemLabel="#{item}" />
+							
+							<p:ajax listener="#{beanRegistrarAlineacion.elegirTemporada}"
+										update="listaPartidos" />
+										
+						</p:selectOneListbox>
+					</p:column>
+					
+					<p:column colspan="1" rowspan="3">
+						<p:outputLabel value="#{msg.registrar_alineaciones_panel_lista_partidos}" />
+						<p:selectOneListbox value="#{beanRegistrarAlineacion.partidoElegido}" id="listaPartidos" disabled="#{beanRegistrarAlineacion.partidosDisabled}"
+												scrollHeight="200" style="width: 100%;" >
+							<f:selectItems value="#{beanRegistrarAlineacion.partidos}" var="item" itemValue="#{item}" itemLabel="#{item}" />
+							
+							<p:ajax listener="#{beanRegistrarAlineacion.elegirPartido}"
+										update="listaJugadores" />
+										
+						</p:selectOneListbox>
+					</p:column>
+					
+					<p:column colspan="1" rowspan="3" >
+						<p:outputLabel value="#{msg.registrar_alineaciones_panel_lista_jugadores}" />
+						<h:selectManyListbox value="#{beanRegistrarAlineacion.jugadoresElegidos}" id="listaJugadores" disabled="#{beanRegistrarAlineacion.jugadoresDisabled}" size="10"
+												scrollHeight="100" style="width: 100%;" >
+							<f:selectItems value="#{beanRegistrarAlineacion.jugadoresPosibles}" var="item" itemValue="#{item}" itemLabel="#{item}" />
+							
+							<p:ajax listener="#{beanRegistrarAlineacion.elegirJugadores}"
+										update="botonConfirmar" />
+										
+						</h:selectManyListbox>
+					</p:column>
+					
+					
+					
+				
+					<p:column colspan="1">
+	        			<p:outputLabel for="nombre" value="#{msg.registrar_alineaciones_panel_nombre}: " />
+	        			<p:inputText id="nombre" value="#{beanRegistrarAlineacion.nombreAlineacion}" />
+	        		</p:column>
+	        			
+	        		<p:column colspan="1" rowspan="3">
+	        			<p:commandButton id="botonConfirmar" disabled="#{beanRegistrarAlineacion.buttonConfirmarDisabled}" value="#{msg.registrar_alineaciones_panel_boton}" icon="ui-icon-check"
+							action="#{beanRegistrarAlineacion.registrarAlineacion}">
+							
+						</p:commandButton>
+	        		</p:column>
+	        	</p:row>
+	        	
+	        	<p:row >
+	        		<p:column rowspan="2">
+	        			<p:outputLabel for = "color" value = "#{msg.registrar_alineaciones_panel_color}: " />
+	        			<p:selectOneListbox id = "color" value = "#{beanRegistrarAlineacion.colorEquipaciones}" style="margin-left: 35%;">
+	        				<f:selectItems value = "#{beanRegistrarAlineacion.posiblesColores}" var = "item" itemValue="#{item}" itemLabel="#{item}" />
+	        				
+	        				<p:ajax listener="#{beanRegistrarAlineacion.elegirJugadores}"
+										update="botonConfirmar" />
+	        			</p:selectOneListbox>
+	        		</p:column>
+	        	</p:row>
+				
+			</p:panelGrid>
+			<p:growl id="growl-success" life="6000" />
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+</html>

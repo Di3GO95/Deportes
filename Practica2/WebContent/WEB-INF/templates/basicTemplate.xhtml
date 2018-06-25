@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<f:view locale="#{beanLocale.locale}">	
+<h:head>
+	<title>
+		<ui:insert name="title">
+			Titulo por defecto
+		</ui:insert>
+		 - AADD
+	</title>
+	<link rel="stylesheet" href="../css/style2.css"/>
+</h:head>
+
+<h:body>
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="header.xhtml"/>
+		</ui:insert>
+	</div>
+	
+	<div style="display: inline-block;">
+		<div id="nav">
+			<ui:insert name="nav">
+	    		<ui:include src="nav.xhtml"/>
+			</ui:insert>
+		</div>
+
+		<div id="section">
+			<ui:insert name="content">
+				Contenido por defecto
+			</ui:insert>
+		</div>
+	</div>
+	
+
+	<div id="footer">
+		<div id = "footerAdmin">
+			<ui:insert name="footerAdmin">
+				<ui:include src="footerAdmin.xhtml"/>
+			</ui:insert>
+		</div>
+		<ui:insert name="footer">
+	    	<ui:include src="footer.xhtml"/>
+		</ui:insert>
+	</div>
+
+</h:body>
+
+</f:view>
+</html>

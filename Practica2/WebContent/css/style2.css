@@ -1,0 +1,107 @@
+body {
+	background-color: #F17153;
+	color: black;
+}
+
+a {
+	color: white;
+}
+
+#header {
+	background-color: #F17153;
+	color: white;
+	padding: 20px 30px 90px 30px;
+	font-size: 30px;
+	border-bottom-style: solid;
+	border-color: black;
+	border-width: 1px;
+	font-family: Arial;
+}
+
+#nav {
+	border: solid 2px black;
+	line-height: 25px;
+	height: 500px;
+	width: 100px;
+	float: left;
+	padding: 5px;
+	display:inline-block;
+}
+
+td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+#nav tr {
+	border-bottom: 2px solid black;
+	display: block;
+}
+
+#section {
+	width: 1600px;
+	float: left;
+	padding: 10px;
+	display:inline-block;
+}
+
+#footer {
+	background-color: #000099;
+	color: white;
+	clear: both;
+	text-align: center;
+	padding: 7px;
+	line-height: 1.8;
+}
+
+.logo {
+	float: left;
+}
+
+.usuario {
+	float: right;
+	word-spacing: 2px;
+	padding-right: 0cm;
+	padding-top: 20px;
+}
+
+.twenty-percent {
+	width: 20%;
+}
+
+.forty-percent {
+	width: 40%;
+}
+
+.sixty-percent {
+	width: 60%;
+}
+
+#footerAdmin th {
+	border-right: 2px solid white;
+	padding: 5px;
+	display: inline;
+}
+
+#footerAdmin th:first-child {
+	border-left: 2px solid white;
+}
+
+.ui-growl-item {
+	background-color: #9CCC65;
+}
+
+#mainCuerpoMensaje {
+	position: fixed;
+	top: 40%;
+	width: 90%;
+	height: 12em;
+	margin-top: -9em; 
+	border: 1px solid #ccc;
+	color: white;
+	text-align: center;
+	background-color: rgba(115, 115, 115, 0.63);
+	text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px
+		0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000,
+		-1px 1px 0 #000000;
+}

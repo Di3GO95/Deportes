@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">#{msg.mensajes_titulo}</ui:define>
+	<ui:define name="content">
+		#{beanMensajes.reiniciarNotificacionMensajes()}
+		<h:form id="form">
+
+			<p:dataTable var="mensajes" value="#{beanMensajes.mensajesRecibidos}">
+
+				<p:column headerText="#{msg.mensajes_titulo}">
+					<h:outputText value="#{mensajes}" />
+				</p:column>
+
+			</p:dataTable>
+
+			<p:commandButton id="botonConfirmar"
+				value="#{msg.mensajes_confirmar_partidos}"
+				icon="ui-icon-check"
+				action="#{beanMensajes.irAConfirmarPartidos}"
+				style="margin-left: 42.5%; width: 15%; margin-top: 0.5%;">
+			</p:commandButton>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">#{msg.partidos_pendientes_confirmacion_titulo}</ui:define>
+
+	<ui:define name="content">
+	
+		<h:form id="form">
+			<p:panelGrid id = "panel" border = "2" cellpadding="5" >
+			
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="3">
+							#{msg.partidos_pendientes_confirmacion_titulo}
+						</p:column>
+					</p:row>
+				</f:facet>
+				
+				<p:row >
+					<p:column>
+						<h:selectManyListbox value="#{beanPartidosPendientesConfirmacion.partidosQueSeQuierenConfirmar}" id="listaPendientes"
+												style="overflow:auto;	height: 200px;">
+												
+						   	<f:selectItems value="#{beanPartidosPendientesConfirmacion.partidosPendientesDeConfirmarFechas}" var="item"
+						    				itemValue="#{item}" itemLabel="#{item}" />  
+						    
+						    <p:ajax listener="#{beanPartidosPendientesConfirmacion.elegirPartidos}"
+										update="botonConfirmar" />
+						         
+						</h:selectManyListbox>
+					</p:column>
+					
+					<p:column>
+						<p:outputLabel value="#{msg.partidos_pendientes_confirmacion_desc}" />
+					</p:column>
+					
+					<p:column>
+	        			<p:commandButton id="botonConfirmar" disabled="#{beanPartidosPendientesConfirmacion.buttonConfirmarDisabled}" value="#{msg.partidos_pendientes_confirmacion_boton}" icon="ui-icon-check"
+							action="#{beanPartidosPendientesConfirmacion.confirmarPartidos}">
+						</p:commandButton>
+	        		</p:column>
+				</p:row>			
+				
+				
+			</p:panelGrid>
+			
+			<p:growl id="growl-success" life="6000" />
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+</html>

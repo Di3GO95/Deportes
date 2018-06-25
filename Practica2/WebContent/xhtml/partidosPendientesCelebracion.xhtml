@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">#{msg.partidos_pendientes_celebracion_titulo}</ui:define>
+	<ui:define name="content">
+	
+		<h:form id="form">
+			
+			<p:dataTable var="partido" value="#{beanPartidosPendientesCelebracion.listaPartidos}" >
+			
+				<p:column headerText="#{msg.partidos_pendientes_celebracion_fecha}" >
+					<h:outputText value="#{partido.fecha}" />
+				</p:column>
+				
+				<p:column headerText="#{msg.partidos_pendientes_celebracion_temporada}">
+					<h:outputText value="#{partido.temporada.nombre}" />
+				</p:column>
+				
+				<p:column headerText="#{msg.partidos_pendientes_celebracion_lugar}">
+					<h:outputText value="#{partido.temporada.lugarCelebracion}" />
+				</p:column>
+			
+			</p:dataTable>
+			
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+</html>

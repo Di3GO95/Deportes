@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">#{msg.registrar_temporada_titulo}</ui:define>
+
+	<ui:define name="content">
+	
+		<h:form>
+			<p:panel id="panelRegistroTemporada" header="#{msg.registrar_temporada_panel_titulo}" style="margin-bottom:10px;">
+				<p:messages id="msgs" />
+			
+				<h:panelGrid columns = "3" cellpadding="5" >
+					<h:outputLabel for="nombre" value="#{msg.registrar_temporada_panel_nombre}: " />
+					<p:inputText id="nombre" value="#{beanTemporada.nombre}" label="Nombre" required="true" placeholder="#{msg.registrar_temporada_panel_nombre_placeholder}" ></p:inputText>
+					<p:message for="nombre" display="icon" />
+						
+					<h:outputLabel for="lugar" value="#{msg.registrar_temporada_panel_lugar}:" />
+					<p:inputText id="lugar" value="#{beanTemporada.lugarCelebracion}" label="Lugar" required="true" placeholder="#{msg.registrar_temporada_panel_lugar_placeholder}" />
+					<p:message for="lugar" display="icon" />
+					
+					<h:outputLabel for="nParticipantes" value="#{msg.registrar_temporada_panel_min_participantes}:" />
+					<p:spinner id="nParticipantes" value="#{beanTemporada.minParticipantesPorPartido}" required="true" min="2" />
+					<p:message for="nParticipantes" display="icon" />
+					
+					<h:outputLabel for="checkboxParticipantes" value = "#{msg.registrar_temporada_panel_checkbox}" />
+					<p:selectBooleanCheckbox id="checkboxParticipantes" value = "#{beanTemporada.hayParticipantes}" />
+					
+				</h:panelGrid>
+				
+				<p:commandButton value="#{msg.registrar_temporada_panel_registrar}" update="panelRegistroTemporada" icon="ui-icon-check" 
+								action="#{beanTemporada.crearTemporada}">
+					<f:ajax render="msgs" > </f:ajax>				
+				</p:commandButton>
+			</p:panel>
+			<p:growl id="growl-success" life="6000" />
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+</html>

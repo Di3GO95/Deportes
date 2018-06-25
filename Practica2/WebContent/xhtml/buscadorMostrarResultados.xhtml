@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">#{msg.resultados_titulo}</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<div align="center">
+				<p:panelGrid id="panelPartidos" border="2" width="100%" columns="1">
+
+					<f:facet name="header">
+						<p:row>
+							<p:column colspan="3">
+								#{msg.resultados_panel_titulo}
+							</p:column>
+						</p:row>
+					</f:facet>
+
+					<p:row>
+						<p:column colspan="3">
+							<p:selectOneListbox value="#{beanMostrarResultados.partidoFecha}"
+								id="listaPartidos" scrollHeight="200" style="width: 100%;">
+								<f:selectItems
+									value="#{beanMostrarResultados.listaPartidosFecha}" var="item"
+									itemValue="#{item}" itemLabel="#{item}">
+								</f:selectItems>
+								<p:ajax listener="#{beanMostrarResultados.elegirPartido}"
+									update="listaAlineaciones" />
+							</p:selectOneListbox>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column colspan="3">
+							<p:outputLabel style="font-weight: bold;">#{msg.resultados_panel_lista_alineaciones}</p:outputLabel>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column colspan="3">
+							<p:selectOneListbox value="#{beanMostrarResultados.alineacionS}"
+								id="listaAlineaciones" scrollHeight="200" style="width: 100%;">
+								<f:selectItems
+									value="#{beanMostrarResultados.listaAlineacionesS}" var="item"
+									itemValue="#{item}" itemLabel="#{item}">
+								</f:selectItems>
+								<p:ajax listener="#{beanMostrarResultados.elegirAlineacion}"
+									update="listaJugadores" />
+							</p:selectOneListbox>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column colspan="3">
+							<p:outputLabel style="font-weight: bold;">#{msg.resultados_panel_lista_jugadores}</p:outputLabel>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column colspan="3">
+							<p:dataList value="#{beanMostrarResultados.jugadores}"
+								var="jugador" id="listaJugadores" paginator="true" rows="10">
+					        #{jugador}
+					    </p:dataList>
+						</p:column>
+					</p:row>
+
+
+				</p:panelGrid>
+			</div>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

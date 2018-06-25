@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <link rel="stylesheet" type="text/css" href="css/style.css"> 
+		 
+		 
+		<meta charset="ISO-8859-1">
+		<title>Login</title>
+		
+	</head>
+	<body style="margin: 0;">
+	
+		<div id="header">
+			<span style="float: left; font-size: 50px;">
+				<a href='login'>
+					<img src="img/logo.png" width=480px height=90px alt="logo">
+				</a>
+			</span>
+			
+			<span style="float: right; word-spacing: 2px; padding-right: 0cm; padding-top: 20px">
+				<a href="login" style="color:#FFFFFF;">Login</a>
+				| <a href="registro" style="color:#FFFFFF;">Registro</a>
+			</span>
+			
+		</div>
+	
+		<form action="login" method="post">
+			<div id="section" style="width: 300px; height: 300px;">
+			    <h2>
+				    Nombre de usuario<br>
+				    <input type="text" name="usuario" class="text-line" required
+				    					onfocus="this.style.color='black'; this.style.borderColor='black';"
+				    					onblur="if(this.value=='')
+				    								{this.style.borderColor='#BDBDBD';}">
+				    <br><br>
+				    Contraseña<br>
+				    <input type="password" name="clave" class="text-line" required
+				    					onfocus="this.style.color='black'; this.style.borderColor='black';"
+				    					onblur="if(this.value=='')
+				    								{this.style.borderColor='#BDBDBD';}">
+				    <br><br>
+				    
+				    <input type="submit" value="Login" class="button">
+				</h2>
+	  		</div>
+		</form>
+		
+	</body>
+</html>

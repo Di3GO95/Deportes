@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view locale="#{beanLocale.locale}">
+
+<h:head>
+	<title>
+		<ui:insert name="title">
+			Titulo por defecto
+		</ui:insert>
+		 - AADD
+	</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/practica/css/style_error.css" />
+</h:head>
+
+<h:body>
+	<div id="header">
+		<ui:insert name="header">
+      		Error
+    	</ui:insert>
+    	<p/>
+	    <ui:insert name="headerImage">
+			<img src="${pageContext.request.contextPath}/practica/img/errorDatabase.ico" alt="Error" width="5%" />
+		</ui:insert>
+	</div>
+
+	<div id="section">
+		<ui:insert name="content">
+     		Explicacion
+    	</ui:insert>
+    	
+    	<p/>
+		#{msg.error_template_contacto_uno} <a href="mailto:aadd.diegovalera@gmail.com"> #{msg.error_template_contacto_dos}</a>
+		<p />
+		<input class="buttonVolver" type="button"
+			onclick="location.href='http://localhost:8080/practica/xhtml/main.xhtml'"
+			value="Volver a la página principal" />
+	</div>
+
+</h:body>
+
+</f:view>
+</html>
