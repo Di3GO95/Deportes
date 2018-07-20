@@ -27,8 +27,6 @@ public class SubscriptorMensajes {
 		session = conn.createTopicSession(false, TopicSession.AUTO_ACKNOWLEDGE);
 		
 		conn.start();
-
-		System.out.println("usuario actual: " + usuario);
 		
 		if (topicSubscriber != null)
 			topicSubscriber.close();

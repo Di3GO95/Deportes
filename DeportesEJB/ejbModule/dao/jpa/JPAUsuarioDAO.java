@@ -203,7 +203,6 @@ public class JPAUsuarioDAO implements UsuarioDAO {
 
 			}
 		}
-		System.out.println("jpaUsuariodaofinnn");
 		return partidosPendientes;
 	}
 

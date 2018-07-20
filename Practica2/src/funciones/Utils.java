@@ -208,16 +208,12 @@ public class Utils {
 		String mensajes_temporadas = (String) request.getSession().getAttribute("mensajes_temporadas");
 		
 		if (mensajes_temporadas == null) {
-			System.out.println("nulo");
 			request.getSession().setAttribute("mensajes_temporadas", selector);
 			return Mensajes_Estados.NO_EXISTE;
 		}else {
-			System.out.println("no nulo");
 			if (mensajes_temporadas.equals(selector)) {
-				System.out.println("Es igual");
 				return Mensajes_Estados.EXISTE_IGUAL;
 			}else {
-				System.out.println("no es igual");
 				request.getSession().setAttribute("mensajes_temporadas", selector);
 				return Mensajes_Estados.EXISTE_DISTINTO;
 			}

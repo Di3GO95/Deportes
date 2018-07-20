@@ -22,16 +22,10 @@ public class OyenteMensajes implements MessageListener {
 	@Override
 	public void onMessage(Message mensaje) {
 		if (mensaje instanceof TextMessage) {
-			System.out.println("BeanMensajes: " + beanMensajes);
-			
 			TextMessage mensajeTexto = (TextMessage) mensaje;
-			System.out.println("OyenteSuscripcion.onMessage()");
 			try {
-				System.out.println("onMessage1");
 				beanMensajes.getMensajesRecibidos().add(mensajeTexto.getText());
-				System.out.println("onMessage2");
 				beanMensajes.setNuevosMensajes(true);
-				System.out.println("onMessage3");
 			} catch (JMSException e) {
 				e.printStackTrace();
 			}

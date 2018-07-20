@@ -65,21 +65,10 @@ public class Controlador {
 	public int registrarPartido(int idTemporada, Date fecha) {
 		int idPartido = controladorRemote.registrarPartido(idTemporada, fecha);
 		
-		/*
-		//String tipo = "Normal";
-		String texto = "Registrado partido el dia " + fecha.toString();
-		try {
-			PublicadorApartado.enviar(texto, idTemporada);
-		} catch (Exception e) {
-			System.out.println("Excepcion al registrar partido");
-			e.printStackTrace();
-		}*/
-		
 		String texto = "Registrado partido el dia " + fecha.toString();
 		try {
 			PublicadorMensajes.enviar(texto, idTemporada);
 		} catch (Exception e) {
-			System.out.println("Excepcion al registrar partido");
 			e.printStackTrace();
 		}
 		
@@ -134,37 +123,10 @@ public class Controlador {
 	
 	public void addParticipanteATemporada(int idTemporada, String usuario) {
 		controladorRemote.addParticipanteATemporada(idTemporada, usuario);
-		
-		System.out.println("Usuario " + usuario + ", quiere escuchar notificaciones");
-		
-		/*
-		try {
-			SuscriptorApartado sa = new SuscriptorApartado();
-			sa.registrarApartado(idTemporada, usuario);
-			//SuscriptorApartado.registrarApartado(idTemporada, usuario);
-		} catch (Exception e) {
-			System.out.println("excepcion al addparticipante");
-			e.printStackTrace();
-		}*/
-		
-		/*
-		try {
-			SubscriptorMensajes.registrarSubscriptor(usuario);
-		} catch (Exception e) {
-			System.out.println("Error al registrar subscriptor");
-			e.printStackTrace();
-		}*/
 	}
 	
 	public void removeParticipanteATemporada(int idTemporada, String usuario) {
 		controladorRemote.removeParticipanteATemporada(idTemporada, usuario);
-		/*
-		try {
-			SuscriptorApartado.quitarApartado(usuario);
-		} catch (NamingException | JMSException e) {
-			System.out.println("excepcion al removeparticipante");
-			e.printStackTrace();
-		}*/
 	}
 	
 	public boolean isUserParticipanteInTemporada(int idTemporada, String usuario) {

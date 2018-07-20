@@ -22,7 +22,6 @@ public class OyenteCola implements MessageListener {
 	public void onMessage(Message mensaje) {
 		if (mensaje instanceof TextMessage) {
 			TextMessage mensajeTexto = (TextMessage) mensaje;
-			System.out.println("OyenteCola.onMessage()");
 			try {
 				beanMensajes.getMensajesRecibidos().add(mensajeTexto.getText());
 			} catch (JMSException e) {

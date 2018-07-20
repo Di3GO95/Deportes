@@ -44,11 +44,8 @@ public class BeanJMSMensajes implements Serializable {
 	}
 	
 	public void recibirMensajes() {
-		System.out.println("***********************");
-		System.out.println("****Recibir mensajes");
 		try {
 			String usuario = Utils.getUsuarioActual();
-			System.out.println("****Usuario " + usuario);
 			
 			List<Integer> listaTemporadasDeUsuario = Controlador.getInstancia().getTemporadasDeUsuario(usuario);
 			
@@ -58,32 +55,20 @@ public class BeanJMSMensajes implements Serializable {
 				for (int i = 1; i < listaTemporadasDeUsuario.size(); i++) {
 					selector += " OR (temporada = " + listaTemporadasDeUsuario.get(i) + ")";
 				}
-				System.out.println("****Selector: " + selector);
 				
 				Mensajes_Estados mensajesInicializados = Utils.inicializarMensajes(selector);
 				if (mensajesInicializados.equals(Mensajes_Estados.NO_EXISTE)) {
-					System.out.println("****No existian mensajes, registramos subscriptor");
 					SubscriptorMensajes.registrarSubscriptor(usuario, selector); /* Primera subscripcion */
 				}else {
-					System.out.println("****Existen mensajes");
 					if (mensajesInicializados.equals(Mensajes_Estados.EXISTE_DISTINTO)) { /* Se ha añadido/borrado al usuario de una temporada */
-						System.out.println("****Existen mensajes y es distinto");
-						//System.out.println("****Borramos subscriptor");
-						//SubscriptorMensajes.borrarSubscriptor(usuario);
-						System.out.println("****Y ahora volvemos a registrarlo");
 						SubscriptorMensajes.registrarSubscriptor(usuario, selector);
 					}else {
-						System.out.println("****Existen mensajes y es igual");
-						//SubscriptorMensajes.borrarSubscriptor(usuario);
-						//System.out.println("****Borrado");
 						SubscriptorMensajes.registrarSubscriptor(usuario, selector);
 					}
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			System.out.println("***********************\n\n\n\n");
 		}
 	}
 

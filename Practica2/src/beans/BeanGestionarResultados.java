@@ -137,8 +137,6 @@ public class BeanGestionarResultados implements Serializable {
 		for (Partido p : listaPartidos) {
 			if (p.getFecha().before(new Date()))
 				partidos.add(p.getFecha().toString());
-			else
-				System.out.println("es despues: " + p.getId());
 		}
 	}
 	

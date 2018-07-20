@@ -107,11 +107,8 @@ public class Utils {
 	}
 
 	public static String getUsuarioActual() {
-		System.out.println("utils - 1");
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
-		
-		System.out.println("utils - 2");
 
 		return (String) request.getSession().getAttribute("usuarioActual");
 	}
