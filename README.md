@@ -1,12 +1,14 @@
-﻿# AADD
+﻿# IMPORTANTE
+
+Este proyecto ha sido realizado como práctica de la asignatura "Aplicaciones Distribuidas" de la Facultad de Informática de la Universidad de Murcia.
+
+## Breve descripcion 📋
 
 Desarrollo de un sistema de información sobre una arquitectura web donde el negocio se encuentra distribuido.
 
-## Breve descripcion
+El sistema se encarga de organizar eventos deportivos entre aficionados amateurs para deportes basados en un resultado de tanteo (futbol, baloncesto, balonmano, etc.).
 
-El sistema se encargara de organizar eventos deportivos entre aficionados amateurs para deportes basados en un resultado de tanteo (futbol, baloncesto, balonmano, etc..).
-
-### Funcionamiento
+### Funcionamiento 🚀
 
 El sistema permitirá a los usuarios administradores registrar una temporada con
 un nombre (e.j. "Futbol sala 17/18- Ayto. Murcia"), pudiendo indicar el lugar de
@@ -49,8 +51,7 @@ información sobre la fecha del partido y se le invitará a que confirme su
 participación en él. El mensaje de respuesta se mandará a un destino único que tiene
 el sistema para recibir avisos de confirmación.
 
-
-### Tecnologías
+### Tecnologías 🛠️
 
 HTML y CSS para la vista.
 
@@ -61,7 +62,14 @@ uso de JPA. También hay partes disponibles en JDBC, aunque sólo parcialmente.
 
 La vista se ha implementado haciendo uso de JSF 2 + Facelets, así como la librería PrimeFaces.
 
-Se ha distribuido la aplicación. De forma que tenemos un proyecto JAVA con las vistas, así como un controlador, que llama
-a otro controlador distribuído, en otro proyecto. La distribución se ha conseguido mediante EJB3.
+Se ha distribuido la aplicación. De forma que tenemos un proyecto JAVA con las vistas, así como un controlador, que llama a otro controlador distribuído, en otro proyecto. La distribución se ha conseguido mediante EJB3.
 
 Se ha implementado un sistema de envío de mensajes no persistido en la base de datos, haciendo uso de JMS.
+
+## Autor ✒️
+
+* **Diego Valera** - *Desarrollo completo de la aplicación* - [Di3GO95](https://github.com/Di3GO95/)
+
+## Licencia 📄
+
+Este proyecto está bajo la licencia MIT - mira el archivo [LICENSE.md](LICENSE.md) para detalles.
